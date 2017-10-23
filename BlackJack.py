@@ -57,7 +57,7 @@ class Bet(object):
             print(list_of_transactions)
         else:
             if balance<self.bet_amount:
-                print("\33 [1;32;40m Your Bet amount is higher than your balance. Your Balance is:",balance)
+                print("Your Bet amount is higher than your balance. Your Balance is:",balance)
                 play_again=0
             else:
                 if win==1:
@@ -178,11 +178,13 @@ def player_choice(value1,value2):
                 else:
                     print("System player Bust, You won")
                     win=1
+                    balance_counter+=1
                     bet.update_balance(win)
-                break
+                    break
         else:
             print("Bust, You Lost")
             win=0
+            balance_counter+=1
             bet.update_balance(win)
 def play_game():
     global player1_cards
