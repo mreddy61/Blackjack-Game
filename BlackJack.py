@@ -193,6 +193,8 @@ def play_game():
     global bet
     global play_again
     global balance_counter
+    global balance
+    global list_of_transactions
     bet.update_balance(1)
     bet.bet_value()
     print("Your Cards:",player1_cards)
@@ -222,14 +224,19 @@ def play_game():
         play_again=int(input("Enter 1 to play again and 0 to exit:",))
     else:
         print("Low balance")
-        play_again=0
+        load_balance=int(input('enter 1 to load balance and 2 to exit:',))
+        if load_balance==1:
+            balance=int(input('Enter the amount you want to load:',))
+            list_of_transactions.append([balance,'Reloaded'])
+            play_again=1
+            load_balance=0
+        elif load_balance==2:
+            play_again=0
 play_game()
 while True:
     if play_again==1:
         balance_counter=1
         player=Player()
-        player1_cards=player.player1()
-        player2_cards=player.player2()
         play_game() 
     else:
         print("Game EXIT")
